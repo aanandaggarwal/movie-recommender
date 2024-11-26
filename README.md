@@ -1,9 +1,9 @@
 # Movie Recommender System Using SVD
 
-This repository contains a movie recommender system I built using collaborative filtering, implemented in Python. The model utilizes the MovieLens dataset to provide personalized movie recommendations based on user ratings, with an additional explainability feature to make recommendations more transparent.
+This repository contains a collaborative filtering-based movie recommender system built in Python. The model utilizes the MovieLens dataset to provide personalized movie recommendations and includes an explainability feature to make recommendations more transparent to users.
 
 ## Overview
-The model is trained on the MovieLens dataset, which contains user ratings, movie information, and user-generated tags. The recommender system aims to predict user preferences and generate top movie recommendations. 
+The recommender system uses the MovieLens dataset, consisting of user ratings, movie metadata, and user-generated tags. The system predicts user preferences and generates top movie recommendations, utilizing Singular Value Decomposition (SVD) to extract latent features.
 
 ## Features
 - **Collaborative Filtering with SVD**: Predicts user preferences for unrated movies by learning latent features from the user-item interaction matrix.
@@ -11,13 +11,15 @@ The model is trained on the MovieLens dataset, which contains user ratings, movi
 - **Explainability**: Provides explanations for recommended movies based on genres and user-applied tags to enhance transparency.
 
 ## Dataset
-This project utilizes the MovieLens dataset, which includes several files:
-- `ratings.csv`: User ratings for movies.
-- `movies.csv`: Movie metadata such as titles and genres.
-- `tags.csv`: User-generated tags for movies.
-- `links.csv`: Movie links to external databases (not used in the current version).
 
-Ensure these files are available in the `data/` folder within the project directory.
+This project utilizes the MovieLens dataset, which includes several files. If the dataset files are not already present in the `data/` folder after cloning, you can download them from the MovieLens website:
+
+- [ratings.csv](https://grouplens.org/datasets/movielens/latest/): User ratings for movies.
+- [movies.csv](https://grouplens.org/datasets/movielens/latest/): Movie metadata such as titles and genres.
+- [tags.csv](https://grouplens.org/datasets/movielens/latest/): User-generated tags for movies.
+- [links.csv](https://grouplens.org/datasets/movielens/latest/): Movie links to external databases (not used in the current version).
+
+Place these files in a folder named `data/` at the root of the project directory.
 
 ## Setup and Installation
 ### Prerequisites
@@ -27,7 +29,7 @@ Ensure these files are available in the `data/` folder within the project direct
 ### Installation
 1. **Clone the Repository**:
    ```sh
-   git clone https://github.com/yourusername/movie-recommender.git
+   git clone https://github.com/aanandaggarwal/movie-recommender.git
    cd movie-recommender
    ```
 
@@ -39,8 +41,8 @@ Ensure these files are available in the `data/` folder within the project direct
    pip install -r requirements.txt
    ```
 
-3. **Organize the Data**:
-   Place the dataset files (`ratings.csv`, `movies.csv`, `tags.csv`, `links.csv`) in a folder named `data/` at the root level of the repository.
+3. **Prepare the Data**:
+   If the dataset files are not included in the cloned repository, download the following files ([ratings.csv, movies.csv, tags.csv, links.csv](https://grouplens.org/datasets/movielens/latest/)) from the MovieLens dataset and place them in a data/ folder at the root of the project.
 
 ## Running the Model
 To run the movie recommender system:
@@ -57,23 +59,18 @@ To run the movie recommender system:
 ### Script Overview
 - **Data Preparation**: Loads the datasets and splits the ratings into training and testing sets.
 - **Training with SVD**: Uses the SVD algorithm from the Surprise library to learn latent factors from user-item ratings.
-- **Cross-Validation**: Performs 5-fold cross-validation to evaluate model performance in terms of Mean Absolute Error (MAE) and Root Mean Square Error (RMSE).
+- **Cross-Validation**: Performs 5-fold cross-validation to evaluate model performance using Mean Absolute Error (MAE) and Root Mean Square Error (RMSE).
 - **Top-N Recommendations**: Generates top 10 movie recommendations for each user and evaluates them using metrics like Precision, Recall, F-measure, and NDCG.
-- **Explainability**: Provides user-specific explanations for recommendations based on genres and user-applied tags.
+- **Explainability**: Enhances user experience by providing user-specific explanations for recommendations based on genres and user-applied tags.
 
 ## Evaluation
-The script prints evaluation metrics to help assess the performance of the model:
-- **MAE** and **RMSE**: Measure the accuracy of predicted ratings.
-- **Precision**, **Recall**, **F-measure**, **NDCG**: Assess the quality of the generated recommendations.
-
-## Evaluation
-The performance of the movie recommender system was assessed using several key metrics. Below is a description of each metric and its practical relevance:
-- **Mean Absolute Error (MAE)**: Measures the average magnitude of the errors in the predicted ratings. It is calculated as the mean of the absolute differences between the actual and predicted ratings. **Lower MAE values** indicate better accuracy of the model in predicting ratings close to the actual values.
-- **Root Mean Square Error (RMSE)**: Similar to MAE but gives more weight to larger errors by squaring the differences between actual and predicted ratings. RMSE helps to penalize significant deviations, providing a more sensitive measure of accuracy. **Lower RMSE values** indicate fewer large errors in the model's predictions.
-- **Precision**: Represents the proportion of recommended items that are actually relevant. In this context, it measures how many of the recommended movies were liked by the user. **Higher precision** indicates that the model is effectively filtering out irrelevant recommendations.
-- **Recall**: Represents the proportion of relevant items that are recommended. It measures how well the model captures all the movies a user would find interesting. **High recall** means that the model is good at recommending a comprehensive set of relevant items.
-- **F-measure**: The harmonic mean of precision and recall. It provides a balance between the two metrics to generally evaluate a model's ability to provide relevant recommendations without missing too many. The F-measure is particularly useful when precision and recall are both important.
-- **Normalized Discounted Cumulative Gain (NDCG)**: Evaluates the ranking quality of the recommendations. It considers the position of relevant items in the recommendation list, giving higher scores when relevant items are ranked closer to the top. **Higher NDCG values** indicate that relevant recommendations are well-ranked, improving user satisfaction.
+The recommender system is evaluated using several key metrics:
+- **Mean Absolute Error (MAE)**: Measures the average absolute difference between actual and predicted ratings, indicating prediction accuracy. **Lower MAE values** indicate better accuracy of the model in predicting ratings close to the actual values.
+- **Root Mean Square Error (RMSE)**: Similar to MAE but gives more weight to larger errors by squaring the differences between actual and predicted ratings. RMSE penalizes significant deviations, providing a more sensitive measure of accuracy. **Lower RMSE values** indicate fewer large errors in the model's predictions.
+- **Precision**: Measures the proportion of recommended movies that are relevant. **Higher precision** means fewer irrelevant recommendations.
+- **Recall**: Measures the proportion of relevant movies that were successfully recommended. **Higher recall** means more comprehensive recommendations.
+- **F-measure**: Balances precision and recall, providing a single value that helps evaluate the model's ability to recommend relevant items.
+- **Normalized Discounted Cumulative Gain (NDCG)**: Evaluates how well relevant items are ranked in the recommendation list, with **higher values** indicating better-ranked recommendations.
 
 ## Acknowledgements
-Special thanks to Professor Zhang and the course staff for their guidance and support. The MovieLens dataset used in this project was introduced by F. Maxwell Harper and Joseph A. Konstan (2015) in "The MovieLens Datasets: History and Context." Additional thanks to all the helpful teachers online for their tutorials and resources that supported the technical implementation of this project.
+Special thanks to Professor Zhang and the course staff for their guidance and support. The MovieLens dataset used in this project was introduced by F. Maxwell Harper and Joseph A. Konstan (2015) in "The MovieLens Datasets: History and Context." Additional thanks to all the helpful instructors/creators online for their tutorials and resources that supported the technical implementation of this project.
