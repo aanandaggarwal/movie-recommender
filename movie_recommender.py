@@ -6,22 +6,18 @@ from surprise.model_selection import KFold as SurpriseKFold
 from surprise import accuracy
 from collections import defaultdict
 
-# Load datasets
 ratings = pd.read_csv('ratings.csv')
 movies = pd.read_csv('movies.csv')
 tags = pd.read_csv('tags.csv')
 links = pd.read_csv('links.csv')
 
-# Split ratings into training and testing sets
 train_ratings, test_ratings = train_test_split(ratings, test_size=0.2, random_state=42)
 
-# Save training and testing sets
 train_ratings.to_csv('train_ratings.csv', index=False)
 test_ratings.to_csv('test_ratings.csv', index=False)
 
 print("Training and testing datasets created.")
 
-# Load dataset into Surprise library
 reader = Reader(rating_scale=(0.5, 5.0))
 data = Dataset.load_from_df(ratings[['userId', 'movieId', 'rating']], reader)
 
@@ -57,7 +53,6 @@ def get_top_n(predictions, n=10):
 # Generate Top-10 recommendations
 top_n = get_top_n(predictions, n=10)
 
-# Calculate evaluation metrics
 def calculate_metrics(top_n, testset):
     hits, total_relevant, total_recommended = 0, 0, 0
     ndcg_sum = 0
@@ -119,7 +114,6 @@ def explain_recommendations(top_n, movies_df, tags_df):
         explanations[user_id] = user_explanations
     return explanations
 
-# Generate explanations for Top-10 recommendations
 recommendation_explanations = explain_recommendations(top_n, movies, tags)
 
 # Print explanations for the first few users
