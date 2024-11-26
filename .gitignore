@@ -1,0 +1,29 @@
+# Ignore generated train and test data files
+train_ratings.csv
+test_ratings.csv
+
+# Ignore virtual environment directories
+venv/
+.env/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyd
+*.whl
+*.egg-info/
+
+# Ignore macOS generated files
+.DS_Store
+._*
+
+# Ignore Windows generated files
+Thumbs.db
+Desktop.ini
+
+# Ignore IDE configurations (e.g., for VS Code or PyCharm)
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.iml
