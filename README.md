@@ -66,5 +66,14 @@ The script prints evaluation metrics to help assess the performance of the model
 - **MAE** and **RMSE**: Measure the accuracy of predicted ratings.
 - **Precision**, **Recall**, **F-measure**, **NDCG**: Assess the quality of the generated recommendations.
 
+## Evaluation
+The performance of the movie recommender system was assessed using several key metrics. Below is a description of each metric and its practical relevance:
+- **Mean Absolute Error (MAE)**: Measures the average magnitude of the errors in the predicted ratings. It is calculated as the mean of the absolute differences between the actual and predicted ratings. **Lower MAE values** indicate better accuracy of the model in predicting ratings close to the actual values.
+- **Root Mean Square Error (RMSE)**: Similar to MAE but gives more weight to larger errors by squaring the differences between actual and predicted ratings. RMSE helps to penalize significant deviations, providing a more sensitive measure of accuracy. **Lower RMSE values** indicate fewer large errors in the model's predictions.
+- **Precision**: Represents the proportion of recommended items that are actually relevant. In this context, it measures how many of the recommended movies were liked by the user. **Higher precision** indicates that the model is effectively filtering out irrelevant recommendations.
+- **Recall**: Represents the proportion of relevant items that are recommended. It measures how well the model captures all the movies a user would find interesting. **High recall** means that the model is good at recommending a comprehensive set of relevant items.
+- **F-measure**: The harmonic mean of precision and recall. It provides a balance between the two metrics to generally evaluate a model's ability to provide relevant recommendations without missing too many. The F-measure is particularly useful when precision and recall are both important.
+- **Normalized Discounted Cumulative Gain (NDCG)**: Evaluates the ranking quality of the recommendations. It considers the position of relevant items in the recommendation list, giving higher scores when relevant items are ranked closer to the top. **Higher NDCG values** indicate that relevant recommendations are well-ranked, improving user satisfaction.
+
 ## Acknowledgements
 Special thanks to Professor Zhang and the course staff for their guidance and support. The MovieLens dataset used in this project was introduced by F. Maxwell Harper and Joseph A. Konstan (2015) in "The MovieLens Datasets: History and Context." Additional thanks to all the helpful teachers online for their tutorials and resources that supported the technical implementation of this project.
