@@ -3,6 +3,7 @@
 This repository contains a collaborative filtering-based movie recommender system built in Python. The model utilizes the MovieLens dataset to provide personalized movie recommendations and includes an explainability feature to make recommendations more transparent to users.
 
 ## Overview
+
 The recommender system uses the MovieLens dataset, consisting of user ratings, movie metadata, and user-generated tags. The system predicts user preferences and generates top movie recommendations, utilizing Singular Value Decomposition (SVD) to extract latent features.
 
 ## Features
@@ -44,7 +45,20 @@ Place these files in a folder named `data/` at the root of the project directory
 3. **Prepare the Data**:
    If the dataset files are not included in the cloned repository, download the following files ([ratings.csv, movies.csv, tags.csv, links.csv](https://grouplens.org/datasets/movielens/latest/)) from the MovieLens dataset and place them in a data/ folder at the root of the project.
 
+## Key Dependencies
+
+This project uses several Python packages that are critical for building and evaluating the recommender system:
+
+- **Pandas**: Used for data manipulation and analysis, including loading and processing the MovieLens dataset.
+- **NumPy**: Provides support for numerical operations, such as calculating metrics efficiently.
+- **scikit-learn**: Used for splitting the dataset into training/testing sets and providing utilities for model evaluation.
+- **Surprise**: A library specialized for building recommender systems. It is used to implement the SVD algorithm, perform cross-validation, and evaluate the model.
+- **Collections (defaultdict)**: Used to efficiently store and manipulate lists of items such as recommendations for users.
+
+These dependencies are included in the `requirements.txt` file, which ensures that the necessary versions are installed for running the project smoothly.
+
 ## Running the Model
+
 To run the movie recommender system:
 1. Ensure that you have activated your virtual environment:
    ```sh
@@ -64,6 +78,7 @@ To run the movie recommender system:
 - **Explainability**: Enhances user experience by providing user-specific explanations for recommendations based on genres and user-applied tags.
 
 ## Evaluation
+
 The recommender system is evaluated using several key metrics:
 - **Mean Absolute Error (MAE)**: Measures the average absolute difference between actual and predicted ratings, indicating prediction accuracy. **Lower MAE values** indicate better accuracy of the model in predicting ratings close to the actual values.
 - **Root Mean Square Error (RMSE)**: Similar to MAE but gives more weight to larger errors by squaring the differences between actual and predicted ratings. RMSE penalizes significant deviations, providing a more sensitive measure of accuracy. **Lower RMSE values** indicate fewer large errors in the model's predictions.
