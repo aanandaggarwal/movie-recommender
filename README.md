@@ -2,18 +2,14 @@
 
 This repository contains a collaborative filtering-based movie recommender system built in Python. The model utilizes the MovieLens dataset to provide personalized movie recommendations and includes an explainability feature to make recommendations more transparent to users.
 
-## Overview
-
-The recommender system uses the MovieLens dataset, consisting of user ratings, movie metadata, and user-generated tags. The system predicts user preferences and generates top movie recommendations, utilizing Singular Value Decomposition (SVD) to extract latent features.
-
-## Features
+## Highlights
 - **Collaborative Filtering with SVD**: Predicts user preferences for unrated movies by learning latent features from the user-item interaction matrix.
-- **K-Fold Cross-Validation**: Evaluates model performance using cross-validation to ensure robust results.
+- **K-Fold Cross-Validation**: Evaluated model performance using cross-validation to ensure robust results.
 - **Explainability**: Provides explanations for recommended movies based on genres and user-applied tags to enhance transparency.
 
 ## Dataset
 
-This project utilizes the MovieLens dataset, which includes several files. If the dataset files are not already present in the `data/` folder after cloning, you can download them from the MovieLens website:
+This project leverages the MovieLens dataset, which includes several key files. If the datasets are not already present in the `data/` folder after cloning, you can download them from the MovieLens website:
 
 - [ratings.csv](https://grouplens.org/datasets/movielens/latest/): User ratings for movies.
 - [movies.csv](https://grouplens.org/datasets/movielens/latest/): Movie metadata such as titles and genres.
@@ -47,7 +43,7 @@ Place these files in a folder named `data/` at the root of the project directory
 
 ## Key Dependencies
 
-This project uses several Python packages that are critical for building and evaluating the recommender system:
+This project uses several Python packages:
 
 - **Pandas**: Used for data manipulation and analysis, including loading and processing the MovieLens dataset.
 - **NumPy**: Provides support for numerical operations, such as calculating metrics efficiently.
@@ -69,14 +65,7 @@ To run the movie recommender system:
    ```sh
    python movie_recommender.py
    ```
-
-### Script Overview
-- **Data Preparation**: Loads the datasets and splits the ratings into training and testing sets.
-- **Training with SVD**: Uses the SVD algorithm from the Surprise library to learn latent factors from user-item ratings.
-- **Cross-Validation**: Performs 5-fold cross-validation to evaluate model performance using Mean Absolute Error (MAE) and Root Mean Square Error (RMSE).
-- **Top-N Recommendations**: Generates top 10 movie recommendations for each user and evaluates them using metrics like Precision, Recall, F-measure, and NDCG.
-- **Explainability**: Enhances user experience by providing user-specific explanations for recommendations based on genres and user-applied tags.
-
+   
 ## Evaluation
 
 The recommender system is evaluated using several key metrics:
